@@ -1,11 +1,17 @@
-import numpy as np
-import serial,time
+class read_serial():
 
-def read_serial(port,speed,q):
-  ser=serial.Serial(port,speed)  #open serial port
-  time.sleep(1)
-  line = ser.readline()
-  data=line.strip().decode('utf-8',errors='replace')
-  ser.close()
-  q.put(data)
-  return
+  def __init__(self,port,speed):
+    import serial
+    self.ser=serial.Serial(port,speed)  #open serial port
+
+  def read(self,q):
+    import serial,time
+    time.sleep(1)
+    line = self.ser.readline()
+    data=line.strip().decode('utf-8',errors='replace')
+    q.put(data)
+    return
+
+  def close(self):
+    self.ser.close()
+    return
