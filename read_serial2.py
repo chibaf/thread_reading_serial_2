@@ -1,9 +1,10 @@
 import threading
 import queue,time
 import serial,sys
-from read_serial_sub import read_serial
+from read_serial_class import read_serial
 
-i=1
+
+i=0
 q =queue.Queue()  # queue which stores a result of a thread
 th = threading.Thread(target=read_serial, args=(sys.argv[1],sys.argv[2],q),daemon=True)
 th.start()
