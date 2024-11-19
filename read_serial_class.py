@@ -1,10 +1,5 @@
 class read_serial():
 
-#  def __init__(ser):
-#    import serial
-#    self.ser=ser
-#    return
-
   def read(self,ser,q):
     import serial,time
     time.sleep(1)

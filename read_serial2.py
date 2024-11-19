@@ -10,15 +10,12 @@ q =queue.Queue()  # queue which stores a result of a thread
 th = threading.Thread(target=read_ser.read, args=(ser,q),daemon=True)
 th.start()
 print("start thread: "+str(i))
-#th.join()
 while True:
   try:
     if threading.active_count()==1:
       data = q.get()
       print(data)
       i=i+1
-#    if i>5:
-#      break;
       th = threading.Thread(target=read_ser.read, args=(ser,q),daemon=True)
       th.start()
       print("start thread: "+str(i))
