@@ -1,6 +1,3 @@
-const int na=100;
-float a[na],b[na];
-
 void setup() {
   // initialize serial comms
   Serial.begin(19200);
