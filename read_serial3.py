@@ -1,6 +1,6 @@
 import threading
 import queue,time
-import serial#,sys
+import serial
 from read_serial_class import read_serial
 
 i=0
