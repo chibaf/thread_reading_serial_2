@@ -1,17 +1,18 @@
 class read_serial():
 
-  def __init__(self,port,speed):
-    import serial
-    self.ser=serial.Serial(port,speed)  #open serial port
+#  def __init__(ser):
+#    import serial
+#    self.ser=ser
+#    return
 
-  def read(self,q):
+  def read(self,ser,q):
     import serial,time
     time.sleep(1)
-    line = self.ser.readline()
+    line=ser.readline()
     data=line.strip().decode('utf-8',errors='replace')
     q.put(data)
     return
 
-  def close(self):
-    self.ser.close()
+  def close(self,ser):
+    ser.close()
     return
