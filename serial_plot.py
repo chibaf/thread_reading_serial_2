@@ -2,6 +2,7 @@ import threading
 import queue,time
 import serial
 from read_serial_class import read_serial
+import matplotlib.pyplot as plt
 
 i=0
 ser0=serial.Serial('/dev/ttyACM0',19200)
@@ -33,6 +34,12 @@ while True:
         y1.insert(0,float(a[1]))
       else: 
         y0.insert(0,float(a[1]))
+      plt.clf()
+      plt.ylim(-1.5,1.5)
+      lin0,=plt.plot(x,y0,label="sine")
+      lin1,=plt.plot(x,y1,label="cosine")
+      plt.legend(handles=[lin0,lin1])
+      plt.pause(0.1)
       i=i+1
       th0 = threading.Thread(target=read_ser0.read, args=(ser0,q0),daemon=True)
       th0.start()
