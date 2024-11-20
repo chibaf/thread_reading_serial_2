@@ -5,6 +5,7 @@ class read_serial():
     time.sleep(0.1)
     line=ser.readline()
     data=line.strip().decode('utf-8',errors='replace')
+    data=data.split(",")
     q.put(data)
     return
 
